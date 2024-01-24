@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class LoginFormController {
+public class ClientFormController {
     public TextField txtText;
     public TextArea txtTextArea;
     public Text txtName;

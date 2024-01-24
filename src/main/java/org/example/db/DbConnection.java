@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DbConnection {
     private static DbConnection dbConnection;
     private Connection connection;
-    public static String email;
+    public static String u_name;
 
     private DbConnection() throws SQLException {
         connection = DriverManager.getConnection(

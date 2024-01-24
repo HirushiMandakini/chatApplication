@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="453.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.ChatFormController">
+<AnchorPane fx:id="root" prefHeight="453.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.LoginPageController">
    <children>
       <Button layoutX="480.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" prefWidth="120.0" style="-fx-background-radius: 40; -fx-background-color: #519259;" text="Login" />
       <Label layoutX="365.0" layoutY="90.0" prefHeight="50.0" prefWidth="268.0" text="Welcome Back!">

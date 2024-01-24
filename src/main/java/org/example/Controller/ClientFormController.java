@@ -14,6 +14,8 @@ public class ClientFormController {
     public ScrollPane Scrollpane;
     public VBox vbox;
 
+    private String ClientName="client";
+
     public void btnPhotoOnAction(ActionEvent actionEvent) {
     }
 
@@ -21,5 +23,9 @@ public class ClientFormController {
     }
 
     public void btnSendOnAction(ActionEvent actionEvent) {
+    }
+
+    public void setClientName(String name) {
+        ClientName=name;
     }
 }

@@ -43,14 +43,23 @@ public class LoginPageController {
 
                     if (pass.equals(enteredPassword) & name.equals(enteredUserName)) {
 
-                        AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/View/ClientForm.fxml"));
+                    //    AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/View/ClientForm.fxml"));
+                        ClientFormController controller = new ClientFormController();
+                    //    controller.setClientName(txtUname.getText()); // Set the parameter
+                    //    Scene scene = new Scene(anchorPane);
+                     //   Stage stage = (Stage) root.getScene().getWindow();
+                     //   stage.setScene(scene);
+                      //  stage.setTitle("Client Form");
+                      //  stage.centerOnScreen();
+                      //  stage.show();
+                        Parent anchorPane = FXMLLoader.load(getClass().getResource("/View/ClientForm.fxml"));
                         Scene scene = new Scene(anchorPane);
-                        Stage stage = (Stage) root.getScene().getWindow();
+
+                        Stage stage = new Stage();
+                        stage.setTitle("Client page");
                         stage.setScene(scene);
-                        stage.setTitle("Client Form");
                         stage.centerOnScreen();
                         stage.show();
-
 
                     } else {
                         new Alert(Alert.AlertType.ERROR, "Invalid username or password").show();

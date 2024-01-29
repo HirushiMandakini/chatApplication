@@ -1,0 +1,7 @@
+create database chat;
+use chat;
+show databases ;
+create table user(
+    u_name varchar(50),
+    u_pword varchar(50)
+);

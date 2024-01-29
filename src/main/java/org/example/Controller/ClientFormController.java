@@ -6,16 +6,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import org.example.emoji.EmojiPicker;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -30,14 +34,19 @@ public class ClientFormController {
     public Text txtName;
     public ScrollPane Scrollpane;
     public VBox vbox;
+    public AnchorPane pane1;
+    public Button emojiButton;
 
     private Socket socket;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
-    private String ClientName = "client";
+    public String clientName = "client";
+    public void setClientName(String name) {
+        clientName = name;
+    }
 
     public void initialize() {
-        txtName.setText(ClientName);
+        txtName.setText(clientName);
 
         new Thread(new Runnable() {
             @Override
@@ -47,7 +56,7 @@ public class ClientFormController {
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
                     System.out.println("Client connected");
-                    ServerFormController.receiveMessage(ClientName+" joined.");
+                    ServerFormController.receiveMessage(clientName+" joined.");
 
                     while (socket.isConnected()){
                         String receivingMsg = dataInputStream.readUTF();
@@ -66,8 +75,42 @@ public class ClientFormController {
             }
         });
 
-       // emoji();
+        emoji();
     }
+    private void emoji() {
+        // Create the EmojiPicker
+        EmojiPicker emojiPicker = new EmojiPicker();
+
+        VBox vBox = new VBox(emojiPicker);
+        vBox.setPrefSize(150,300);
+        vBox.setLayoutX(400);
+        vBox.setLayoutY(175);
+        vBox.setStyle("-fx-font-size: 30");
+
+        pane1.getChildren().add(vBox);
+
+        // Set the emoji picker as hidden initially
+        emojiPicker.setVisible(false);
+
+        // Show the emoji picker when the button is clicked
+        emojiButton.setOnAction(event -> {
+            if (emojiPicker.isVisible()){
+                emojiPicker.setVisible(false);
+            }else {
+                emojiPicker.setVisible(true);
+            }
+        });
+
+        // Set the selected emoji from the picker to the text field
+        emojiPicker.getEmojiListView().setOnMouseClicked(event -> {
+            String selectedEmoji = emojiPicker.getEmojiListView().getSelectionModel().getSelectedItem();
+            if (selectedEmoji != null) {
+                txtText.setText(txtText.getText()+selectedEmoji);
+            }
+            emojiPicker.setVisible(false);
+        });
+    }
+
     public static void receiveMessage(String msg, VBox vBox) throws IOException {
         if (msg.matches(".*\\.(png|jpe?g|gif)$")){
             HBox hBoxName = new HBox();
@@ -123,6 +166,10 @@ public class ClientFormController {
             });
         }
     }
+    public void shutdown() {
+        // cleanup code here...
+        ServerFormController.receiveMessage(clientName+" left.");
+    }
     public void btnPhotoOnAction(ActionEvent actionEvent) {
     }
 
@@ -130,6 +177,7 @@ public class ClientFormController {
     }
 
     public void btnSendOnAction(ActionEvent actionEvent) {
+
         sendMsg(txtText.getText());
     }
 
@@ -167,7 +215,7 @@ public class ClientFormController {
 
 
                 try {
-                    dataOutputStream.writeUTF(ClientName + "-" + msgToSend);
+                    dataOutputStream.writeUTF(clientName + "-" + msgToSend);
                     dataOutputStream.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -178,9 +226,7 @@ public class ClientFormController {
         }
     }
 
+    public void emojiOnAction(MouseEvent mouseEvent) {
 
-
-    public void setClientName(String name) {
-        ClientName=name;
     }
 }

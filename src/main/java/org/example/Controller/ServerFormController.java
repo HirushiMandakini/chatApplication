@@ -34,7 +34,7 @@ public class ServerFormController {
         Scene scene = new Scene(anchorPane);
 
         Stage stage = new Stage();
-        stage.setTitle("Customer Manage");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
@@ -62,7 +62,8 @@ public class ServerFormController {
     public void initialize(){
         staticVBox = vboxServer;
         receiveMessage("Sever Starting..");
-      /*  vboxServer.heightProperty().addListener(new ChangeListener<Number>() {
+
+     /*   vboxServer.heightProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
                 ScrollPane.setVvalue((Double) newValue);

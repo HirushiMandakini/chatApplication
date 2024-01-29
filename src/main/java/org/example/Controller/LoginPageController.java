@@ -5,15 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.example.Model.UserModel;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class LoginPageController {
     public AnchorPane root;
@@ -24,52 +20,34 @@ public class LoginPageController {
 
     }
 
-    public void btnLoginOnAction(ActionEvent actionEvent) {
-        String enteredUserName = txtUname.getText();
-        String enteredPassword = txtPword.getText();
+    public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
 
-        if(enteredUserName.isEmpty()) {
-            new Alert(Alert.AlertType.INFORMATION, "username required..!!", ButtonType.OK).show();
-        }else if(enteredPassword.isEmpty()) {
-            new Alert(Alert.AlertType.INFORMATION, "password required..!!", ButtonType.OK).show();
-        } else {
-            try {
-                ResultSet resultSet = UserModel.checkCredentials(enteredUserName, enteredPassword);
+        if (!txtUname.getText().isEmpty()&&txtUname.getText().matches("[A-Za-z0-9]+")){
+            Stage primaryStage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/ClientForm.fxml"));
 
-                if (resultSet.next()) {
-                    String name = resultSet.getString(1);
-                    String pass = resultSet.getString(2);
+            ClientFormController controller = new ClientFormController();
+            controller.setClientName(txtUname.getText()); // Set the parameter
+            fxmlLoader.setController(controller);
 
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+            primaryStage.setTitle(txtUname.getText());
+            primaryStage.setResizable(false);
+            primaryStage.centerOnScreen();
+            primaryStage.setOnCloseRequest(windowEvent -> {
+                controller.shutdown();
+            });
+            primaryStage.show();
 
-                    if (pass.equals(enteredPassword) & name.equals(enteredUserName)) {
+            txtUname.clear();
+            txtPword.clear();
 
-                        ClientFormController controller = new ClientFormController();
-                        controller.setClientName(txtUname.getText()); // Set the parameter
-
-                        Parent anchorPane = FXMLLoader.load(getClass().getResource("/View/ClientForm.fxml"));
-                        Scene scene = new Scene(anchorPane);
-
-                        Stage stage = new Stage();
-                        stage.setTitle("Client page");
-                        stage.setScene(scene);
-                        stage.centerOnScreen();
-                        stage.show();
-
-                    } else {
-                        new Alert(Alert.AlertType.ERROR, "Invalid username or password").show();
-                    }
-                }
-
-            } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Please enter your name").show();
         }
-
     }
 
-    public void HyperOnAction(ActionEvent actionEvent) throws IOException {
+    public void HyperOnAction (ActionEvent actionEvent) throws IOException {
         Parent rootNode = FXMLLoader.load(this.getClass().getResource("/View/SignupForm.fxml"));
 
         Scene scene = new Scene(rootNode);
@@ -80,5 +58,5 @@ public class LoginPageController {
         stage.setScene(scene);
         stage.setTitle("Signup Form");
     }
-    }
+}
 

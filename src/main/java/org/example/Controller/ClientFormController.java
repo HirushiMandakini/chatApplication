@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -21,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.example.emoji.EmojiPicker;
 
+import java.awt.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -36,7 +38,6 @@ public class ClientFormController {
     public VBox vbox;
     public AnchorPane pane1;
     public Button emojiButton;
-
     private Socket socket;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
@@ -170,7 +171,39 @@ public class ClientFormController {
         // cleanup code here...
         ServerFormController.receiveMessage(clientName+" left.");
     }
-    public void btnPhotoOnAction(ActionEvent actionEvent) {
+    @FXML
+    void btnAttachmentOnAction(ActionEvent event) {
+
+    }
+    private void sendImage(String msgToSend) {
+        Image image = new Image("file:" + msgToSend);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+
+        HBox hBox = new HBox();
+        hBox.setPadding(new Insets(5, 5, 5, 10));
+        hBox.getChildren().add(imageView);
+        hBox.setAlignment(Pos.CENTER_RIGHT);
+
+        vbox.getChildren().add(hBox);
+
+        try {
+            dataOutputStream.writeUTF(clientName + "-" + msgToSend);
+            dataOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        }
+
+        public void btnPhotoOnAction(ActionEvent actionEvent) {
+            FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
+            dialog.setMode(FileDialog.LOAD);
+            dialog.setVisible(true);
+            String file = dialog.getDirectory()+dialog.getFile();
+            dialog.dispose();
+            sendImage(file);
+            System.out.println(file + " chosen.");
     }
 
     public void btnEmojieOnAction(ActionEvent actionEvent) {
@@ -212,7 +245,6 @@ public class ClientFormController {
 
                 vbox.getChildren().add(hBox);
                 vbox.getChildren().add(hBoxTime);
-
 
                 try {
                     dataOutputStream.writeUTF(clientName + "-" + msgToSend);

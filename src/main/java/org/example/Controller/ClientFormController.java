@@ -53,7 +53,7 @@ public class ClientFormController {
             @Override
             public void run() {
                 try{
-                    socket = new Socket("localhost", 3001);
+                    socket = new Socket("localhost", 3004);
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
                     System.out.println("Client connected");
@@ -152,9 +152,9 @@ public class ClientFormController {
 
             Text text = new Text(msgFromServer);
             TextFlow textFlow = new TextFlow(text);
-            textFlow.setStyle("-fx-background-color: #abb8c3; -fx-font-weight: bold; -fx-background-radius: 20px");
+            textFlow.setStyle("-fx-background-color: #AAD7D9; -fx-font-weight: bold;  -fx-background-radius: 20px");
             textFlow.setPadding(new Insets(5,10,5,10));
-            text.setFill(Color.color(0,0,0));
+            text.setFill(Color.color(1,1,1));
 
             hBox.getChildren().add(textFlow);
 
@@ -224,13 +224,13 @@ public class ClientFormController {
                 hBox.setPadding(new Insets(5, 5, 0, 10));
 
                 Text text = new Text(msgToSend);
-                text.setStyle("-fx-font-size: 14");
+                text.setStyle("-fx-font-size: 12");
                 TextFlow textFlow = new TextFlow(text);
 
 //              #0693e3 #37d67a #40bf75
-                textFlow.setStyle("-fx-background-color: #0693e3; -fx-font-weight: bold; -fx-color: white; -fx-background-radius: 20px");
+                textFlow.setStyle("-fx-background-color: #A8DF8E; -fx-font-weight: bold; -fx-color: black; -fx-background-radius: 20px");
                 textFlow.setPadding(new Insets(5, 10, 5, 10));
-                text.setFill(Color.color(1, 1, 1));
+                text.setFill(Color.color(0, 0, 0));
 
                 hBox.getChildren().add(textFlow);
 

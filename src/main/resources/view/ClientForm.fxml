@@ -16,29 +16,29 @@
       <Button fx:id="emojiButton" layoutX="268.0" layoutY="539.0" mnemonicParsing="false" onAction="#btnEmojieOnAction" opacity="0.0" prefHeight="35.0" prefWidth="38.0" />
       <Button layoutX="313.0" layoutY="539.0" mnemonicParsing="false" onAction="#btnSendOnAction" opacity="0.0" prefHeight="35.0" prefWidth="38.0" />
       <TextField fx:id="txtText" layoutX="51.0" layoutY="540.0" prefHeight="35.0" prefWidth="219.0" />
-      <Text fx:id="txtName" layoutX="147.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.33673095703125">
+      <Text fx:id="txtName" fill="#1e5128" layoutX="147.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.33673095703125">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
       <ScrollPane fx:id="Scrollpane" layoutX="12.0" layoutY="53.0" prefHeight="474.0" prefWidth="336.0">
          <content>
-            <VBox fx:id="vbox" prefHeight="470.0" prefWidth="330.0" />
+            <VBox fx:id="vbox" prefHeight="470.0" prefWidth="332.0" style="-fx-background-color: #D5F0C1;" />
          </content>
       </ScrollPane>
       <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="15.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/add-photo.png" />
+            <Image url="@../assets/add-photo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="283.0" layoutY="547.0" onMouseClicked="#emojiOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/smile.png" />
+            <Image url="@../assets/smile.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="27.0" fitWidth="21.0" layoutX="321.0" layoutY="547.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/paper-plane.png" />
+            <Image url="@../assets/paper-plane.png" />
          </image>
       </ImageView>
    </children>

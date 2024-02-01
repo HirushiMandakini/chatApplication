@@ -48,7 +48,7 @@ public class SignupFormController {
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
 
-        AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/View/loginForm.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(this.getClass().getResource("/view/loginForm.fxml"));
         Scene scene = new Scene(anchorPane);
         Stage stage = (Stage) root1.getScene().getWindow();
         stage.setScene(scene);

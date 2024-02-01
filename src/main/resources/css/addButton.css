@@ -1,0 +1,7 @@
+.button:hover {
+    -fx-background-color: #419197; /* Change this to the desired hover color */
+}
+
+.button {
+    -fx-background-color:  #93B1A6;
+}

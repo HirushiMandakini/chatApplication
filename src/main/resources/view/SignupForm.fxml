@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="457.0" fitWidth="340.0" layoutX="-8.0" layoutY="-1.0" pickOnBounds="true">
          <image>
-            <Image url="@../Assets/create account.gif" />
+            <Image url="@../assets/create account.gif" />
          </image></ImageView>
       <Label layoutX="365.0" layoutY="91.0" prefHeight="50.0" prefWidth="268.0" text="Create Account">
          <font>
@@ -27,13 +27,13 @@
       <TextField fx:id="txtPword1" layoutX="382.0" layoutY="269.0" prefHeight="42.0" prefWidth="298.0" promptText="Password" style="-fx-background-radius: 0; -fx-border-color: #A367B1;" />
       <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="356.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/user.png" />
+            <Image url="@../assets/user.png" />
          </image>
       </ImageView>
       <TextField fx:id="txtUname1" layoutX="382.0" layoutY="203.0" prefHeight="42.0" prefWidth="297.0" promptText="User Name" style="-fx-background-radius: 0; -fx-border-color: #A367B1; -fx-padding: 0;" />
       <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="356.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/padlock.png" />
+            <Image url="@../assets/padlock.png" />
          </image>
       </ImageView>
       <Button layoutX="456.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnCreateOnAction" prefHeight="42.0" prefWidth="130.0" style="-fx-background-radius: 40; -fx-background-color: #A367B1;" text="Create Account" />

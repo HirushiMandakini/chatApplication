@@ -24,7 +24,7 @@ public class LoginPageController {
 
         if (!txtUname.getText().isEmpty()&&txtUname.getText().matches("[A-Za-z0-9]+")){
             Stage primaryStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/ClientForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ClientForm.fxml"));
 
             ClientFormController controller = new ClientFormController();
             controller.setClientName(txtUname.getText()); // Set the parameter
@@ -48,7 +48,7 @@ public class LoginPageController {
     }
 
     public void HyperOnAction (ActionEvent actionEvent) throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/View/SignupForm.fxml"));
+        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/SignupForm.fxml"));
 
         Scene scene = new Scene(rootNode);
 

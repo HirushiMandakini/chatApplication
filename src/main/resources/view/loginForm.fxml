@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="root" prefHeight="453.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.LoginPageController">
    <children>
-      <Button layoutX="480.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" prefWidth="120.0" style="-fx-background-radius: 40; -fx-background-color: #519259;" text="Login" />
+      <Button layoutX="480.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="42.0" prefWidth="120.0" style="-fx-background-radius: 40; -fx-background-color: #519259;" stylesheets="@../css/loginButton.css" text="Login" />
       <Label layoutX="365.0" layoutY="90.0" prefHeight="50.0" prefWidth="268.0" text="Welcome Back!">
          <font>
             <Font size="30.0" />
@@ -31,18 +31,18 @@
       <Hyperlink layoutX="616.0" layoutY="34.0" onAction="#HyperOnAction" prefHeight="24.0" prefWidth="67.0" text="Sign Up" />
       <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="365.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/user.png" />
+            <Image url="@../assets/user.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="453.0" fitWidth="349.0" pickOnBounds="true">
          <image>
-            <Image url="@../Assets/Login.gif" />
+            <Image url="@../assets/Login.gif" />
          </image>
       </ImageView>
       <TextField fx:id="txtUname" layoutX="391.0" layoutY="207.0" prefHeight="42.0" prefWidth="297.0" promptText="   User Name" style="-fx-background-radius: 0; -fx-border-color: #4FA095; -fx-padding: 5;" />
       <ImageView fitHeight="18.0" fitWidth="20.0" layoutX="365.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Assets/padlock.png" />
+            <Image url="@../assets/padlock.png" />
          </image>
       </ImageView>
    </children>

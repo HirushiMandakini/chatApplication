@@ -84,8 +84,8 @@ public class ClientFormController {
 
         VBox vBox = new VBox(emojiPicker);
         vBox.setPrefSize(150,300);
-        vBox.setLayoutX(400);
-        vBox.setLayoutY(175);
+        vBox.setLayoutX(200);
+        vBox.setLayoutY(235);
         vBox.setStyle("-fx-font-size: 30");
 
         pane1.getChildren().add(vBox);
